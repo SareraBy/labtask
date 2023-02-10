@@ -9,11 +9,8 @@ const Lab1:FC = () => {
     const [bool, setBool] = useState('')
     const checkup = function (str: string) {
         const arrStr = str.split('');
-        console.log(arrStr)
         for (let symbol of text) {
-            console.log(symbol)
         if (!arrStr.includes(symbol)){
-
             return  setBool('Не совподает');
         }
 
