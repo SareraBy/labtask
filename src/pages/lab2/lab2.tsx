@@ -6,6 +6,7 @@ const Lab2:FC = () => {
     const [number, setNumber] = useState('')
     const [bool10, setBool10] = useState('')
     const [bool2, setBool2] = useState('')
+
     const count = function (num:number|any) {
         setBool10(num);
 
