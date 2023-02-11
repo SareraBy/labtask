@@ -7,18 +7,18 @@ const Lab1:FC = () => {
     const [text, setText] = useState('')
     const [sim, setSim] = useState('')
     const [bool, setBool] = useState('')
-    const checkup = function (str: string) {
-        const arrStr = str.split('');
-        for (let symbol of text) {
-        if (!arrStr.includes(symbol)){
-            return  setBool('Не совподает');
-        }
 
+    const checkup = function (str: string) {
+        const arrStr = str.split(''); // Преоброзование строки в массив
+        for (let symbol of text) { // Цикл перебора по буквам
+        if (!arrStr.includes(symbol)){ // Проверка на наличие буквы
+            return  setBool('Не совподает'); // Вывод
         }
-        return setBool('Совподает');
+        }
+        return setBool('Совподает'); // Вывод
     };
 
-    return (
+    return ( // Визуальная часть
         <div className={"m-2"}>
             <h3 className={"m-3"}> Лабраторна робота №1</h3>
             <Form>
