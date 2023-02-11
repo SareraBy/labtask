@@ -2,7 +2,7 @@ import React from 'react';
 
 const Lab3 = () => {
     return (
-        <div>
+        <div className={"m-2"}>
             
         </div>
     );

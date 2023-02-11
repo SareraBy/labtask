@@ -26,6 +26,7 @@ const Lab1:FC = () => {
                 <Form.Control value={sim} onChange={e=> setSim(e.target.value)} className={"mb-2 w-25"}  type="text" placeholder="Алфовит" />
                 <Form.Control value={text} onChange={e=> setText(e.target.value)} className={"mb-1 w-25"}  type="text" placeholder="Ведите сообщение" />
             </Form>
+
             <p className={'m-1'}>{bool}</p>
             <Button onClick={()=> checkup(sim)} className={"mb-3 w-25"}  variant={"outline-dark"}> Проверить</Button>
 
