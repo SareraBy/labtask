@@ -19,6 +19,7 @@ const Lab2:FC = () => {
 
             bit <<= 1;
 
+
         }
 
         return setBool2(num2 || "0");
