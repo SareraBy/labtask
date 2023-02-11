@@ -14,7 +14,7 @@ const Lab2:FC = () => {
 
         while( num >= bit ) {
 
-            num2 = ( num & bit ? 1 : 0 ) + num2;
+            num2 = (!(num && bit) ? 0 : 1) + num2;
 
             bit <<= 1;
 
