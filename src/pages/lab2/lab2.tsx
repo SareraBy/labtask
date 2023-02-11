@@ -16,6 +16,7 @@ const Lab2:FC = () => {
 
             num2 = (!(num && bit) ? 0 : 1) + num2;
 
+
             bit <<= 1;
 
         }
