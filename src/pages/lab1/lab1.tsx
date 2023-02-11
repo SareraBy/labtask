@@ -1,5 +1,5 @@
-import React, {FC, useEffect, useState} from 'react';
-import {Form, Table,Button} from "react-bootstrap";
+import React, {FC, useState} from 'react';
+import {Form,Button} from "react-bootstrap";
 
 
 const Lab1:FC = () => {
@@ -21,6 +21,7 @@ const Lab1:FC = () => {
     return ( // Визуальная часть
         <div className={"m-2"}>
             <h3 className={"m-3"}> Лабраторна робота №1</h3>
+
             <Form>
                 <Form.Control value={sim} onChange={e=> setSim(e.target.value)} className={"mb-2 w-25"}  type="text" placeholder="Алфовит" />
                 <Form.Control value={text} onChange={e=> setText(e.target.value)} className={"mb-1 w-25"}  type="text" placeholder="Ведите сообщение" />
