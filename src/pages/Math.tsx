@@ -26,8 +26,10 @@ const Math = () => {
             <ButtonClick onClick={()=>setValue(9)}>9</ButtonClick>
             <ButtonClick onClick={()=>setValue(0)}>0</ButtonClick>
 
-            <Button className={"w-50 mt-2 mb-2"} style={{color:"white"}} variant={"outline-dark"}> = </Button>
-        </Row>
+               <div className={"d-flex align-content-center justify-content-center"}>
+                     <Button className={"w-50 mt-2 mb-2"} style={{color:"black", background:"white"}} variant={"outline-dark"}> = </Button>
+                </div>
+          </Row>
         </div>
         </div>
     );
