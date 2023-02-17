@@ -1,8 +1,13 @@
 .btn-click-m{
+
     background:white;
+    border: 1px solid white;
     
 }.btn-click-m:hover{
-     color: white;
-    background: darkslategray;
-    font-size: 20px;
- }
+          color: white;
+          background: darkslategray;
+          font-size: 20px;
+          border: 1px solid black;
+ }.btn-click-m:active{
+       font-size: 22px;
+   }
