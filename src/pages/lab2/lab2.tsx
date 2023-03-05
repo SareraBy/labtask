@@ -8,13 +8,16 @@ const Lab2:FC = () => {
     const [bool2, setBool2] = useState('')
 
     const count = function (num:number|any) {
-        setBool10(num);
-
+        setBool10(num || 0);
+        if (num < 0){
+            setBool10('Ошибка ввода число!!! число не может быть отрицательное!!!') // Условие что десятичное число не может быть отрицательное
+            return setBool2('')
+        }
         let num2 = "", bit = 1;
 
         while( num >= bit ) {
 
-            num2 = (!(num && bit) ? 0 : 1) + num2;
+            num2 = (!(num & bit) ? 0 : 1) + num2; // Перевод в десятичную дробь
 
 
             bit <<= 1;
@@ -22,8 +25,7 @@ const Lab2:FC = () => {
 
         }
 
-        return setBool2(num2 || "0");
-
+        return setBool2(num2 || "0"); // Ч  исло или 0
     }
 
     return (
