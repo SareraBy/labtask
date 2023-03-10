@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 function Lab4() {
-    const [inputNumber, setInputNumber] = useState("");
-    const [fromBase, setFromBase] = useState(10);
-    const [toBase, setToBase] = useState(10);
-    const [outputNumber, setOutputNumber] = useState("");
+    const [inputNumber, setInputNumber] = useState<string>("");
+    const [fromBase, setFromBase] = useState<number>(10);
+    const [toBase, setToBase] = useState<number>(10);
+    const [outputNumber, setOutputNumber] = useState<string>("");
 
     const convertNumber = () => {
         // Перевірка введених значень
