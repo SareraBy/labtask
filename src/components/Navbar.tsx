@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import {HOME_ROUTE, lab1_ROUTE, lab2_ROUTE, lab3_ROUTE, MATH_ROUTE} from "../utils/route";
+import {HOME_ROUTE, lab1_ROUTE, lab2_ROUTE, lab3_ROUTE, lab4_ROUTE, lab5_ROUTE, MATH_ROUTE} from "../utils/route";
 import {Button} from "bootstrap";
 import {Link} from "react-router-dom";
 interface Nav {
@@ -20,6 +20,8 @@ const Navbarmain = ({name}:Nav) => {
                             <NavDropdown.Item href={lab1_ROUTE}>1 lab</NavDropdown.Item>
                             <NavDropdown.Item href={lab2_ROUTE}>2 lab</NavDropdown.Item>
                             <NavDropdown.Item href={lab3_ROUTE}>3 lab</NavDropdown.Item>
+                            <NavDropdown.Item href={lab4_ROUTE}>4 lab</NavDropdown.Item>
+                            <NavDropdown.Item href={lab5_ROUTE}>5 lab</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <Nav>
