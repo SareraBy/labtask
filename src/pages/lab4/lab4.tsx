@@ -13,8 +13,14 @@ function Lab4() {
             alert("Будь ласка, введіть число, яке потрібно переконвертувати.");
             return;
         }
+
         if (isNaN(parseInt(inputNumber, fromBase))) {
             alert("Введено некоректне число для вибраної системи числення.");
+            return;
+        }
+
+        if(parseInt(inputNumber) < 0){
+            alert("Не можна!!!")
             return;
         }
 
@@ -22,6 +28,7 @@ function Lab4() {
         const decimalNumber = parseInt(inputNumber, fromBase);
         const convertedNumber = decimalNumber.toString(toBase).toUpperCase();
         setOutputNumber(convertedNumber);
+
     };
 
     return (
