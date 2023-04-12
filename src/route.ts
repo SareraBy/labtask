@@ -1,11 +1,21 @@
 import Home from "./pages/Home";
-import {HOME_ROUTE, lab1_ROUTE, lab2_ROUTE, lab3_ROUTE, lab4_ROUTE, lab5_ROUTE, MATH_ROUTE} from "./utils/route";
+import {
+    HOME_ROUTE,
+    lab1_ROUTE,
+    lab2_ROUTE,
+    lab3_ROUTE,
+    lab4_ROUTE,
+    lab5_ROUTE,
+    lab6_ROUTE,
+    MATH_ROUTE
+} from "./utils/route";
 import Math from "./pages/Math";
 import lab1 from "./pages/lab1/lab1";
 import lab2 from "./pages/lab2/lab2";
 import lab3 from "./pages/lab3/lab3";
 import lab4 from "./pages/lab4/lab4";
 import lab5 from "./pages/lab5/lab5";
+import lab6 from "./pages/lab6/lab6";
 
 export const publicRoutes = [
     {
@@ -35,5 +45,9 @@ export const publicRoutes = [
     {
         path: lab5_ROUTE,
         Component: lab5
+    },
+    {
+        path: lab6_ROUTE,
+        Component: lab6
     },
 ]

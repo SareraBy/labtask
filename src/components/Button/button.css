@@ -11,3 +11,13 @@
  }.btn-click-m:active{
        font-size: 22px;
    }
+
+
+.btn1-click-m{
+
+    background:white;
+    border: 1px solid white;
+
+}.btn1-click-m:hover{
+    transform: scale(1.02);
+ }

@@ -35,6 +35,7 @@ function Lab4() {
         <Container className="py-5">
             <Row>
                 <Col md={6}>
+                    <h3 className={"m-3"}> Лабраторна робота №4</h3>
                     <h2>Конвертер систем числення</h2>
                     <Form>
                         <Form.Group controlId="inputNumber">

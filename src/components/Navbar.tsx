@@ -1,6 +1,15 @@
 import React, {Component} from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import {HOME_ROUTE, lab1_ROUTE, lab2_ROUTE, lab3_ROUTE, lab4_ROUTE, lab5_ROUTE, MATH_ROUTE} from "../utils/route";
+import {Col, Container, Nav, Navbar, NavDropdown, Row} from 'react-bootstrap';
+import {
+    HOME_ROUTE,
+    lab1_ROUTE,
+    lab2_ROUTE,
+    lab3_ROUTE,
+    lab4_ROUTE,
+    lab5_ROUTE,
+    lab6_ROUTE,
+    MATH_ROUTE
+} from "../utils/route";
 import {Button} from "bootstrap";
 import {Link} from "react-router-dom";
 interface Nav {
@@ -15,13 +24,15 @@ const Navbarmain = ({name}:Nav) => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href={HOME_ROUTE}>Основная страница</Nav.Link>
-                        <Nav.Link href={MATH_ROUTE}>Калькулятор</Nav.Link>
+                        <Nav.Link disabled={true} href={MATH_ROUTE}>Калькулятор</Nav.Link>
                         <NavDropdown title="Список лабраторных робот" id="basic-nav-dropdown">
-                            <NavDropdown.Item href={lab1_ROUTE}>1 lab</NavDropdown.Item>
-                            <NavDropdown.Item href={lab2_ROUTE}>2 lab</NavDropdown.Item>
-                            <NavDropdown.Item href={lab3_ROUTE}>3 lab</NavDropdown.Item>
-                            <NavDropdown.Item href={lab4_ROUTE}>4 lab</NavDropdown.Item>
-                            <NavDropdown.Item href={lab5_ROUTE}>5 lab</NavDropdown.Item>
+
+                            <Row className={'p-3'}> <Link to={lab1_ROUTE} className={'text-decoration-none mb-2 btn1-click-m'} style={{color:'black'}}>  1 lab</Link>
+                             <Link to={lab2_ROUTE} className={'text-decoration-none mb-2 btn1-click-m'}style={{color:'black'}}>  2 lab</Link>
+                             <Link to={lab3_ROUTE} className={'text-decoration-none mb-2 btn1-click-m'}style={{color:'black'}}>  3 lab</Link>
+                             <Link to={lab4_ROUTE} className={'text-decoration-none mb-2 btn1-click-m'}style={{color:'black'}}> 4 lab</Link>
+                             <Link to={lab5_ROUTE} className={'text-decoration-none mb-2 btn1-click-m'}style={{color:'black'}}>  5 lab</Link>
+                                <Link to={lab6_ROUTE} className={'text-decoration-none mb-2 btn1-click-m'}style={{color:'black'}}>  6 lab</Link> </Row>
                         </NavDropdown>
                     </Nav>
                     <Nav>
