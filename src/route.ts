@@ -1,12 +1,12 @@
 import Home from "./pages/Home";
 import {
-    HOME_ROUTE,
+    HOME_ROUTE, lab10_ROUTE,
     lab1_ROUTE,
     lab2_ROUTE,
     lab3_ROUTE,
     lab4_ROUTE,
     lab5_ROUTE,
-    lab6_ROUTE,
+    lab6_ROUTE, lab7_ROUTE, lab8_ROUTE, lab9_ROUTE,
     MATH_ROUTE
 } from "./utils/route";
 import Math from "./pages/Math";
@@ -16,6 +16,10 @@ import lab3 from "./pages/lab3/lab3";
 import lab4 from "./pages/lab4/lab4";
 import lab5 from "./pages/lab5/lab5";
 import lab6 from "./pages/lab6/lab6";
+import lab7 from "./pages/lab7/lab7";
+import lab8 from "./pages/lab8/lab8";
+import lab9 from "./pages/lab9/lab9";
+import lab10 from "./pages/lab10/lab10";
 
 export const publicRoutes = [
     {
@@ -50,4 +54,21 @@ export const publicRoutes = [
         path: lab6_ROUTE,
         Component: lab6
     },
+    {
+        path: lab7_ROUTE,
+        Component: lab7
+    },
+    {
+        path: lab8_ROUTE,
+        Component: lab8
+    },
+    {
+        path: lab9_ROUTE,
+        Component: lab9
+    },
+    {
+        path: lab10_ROUTE,
+        Component: lab10
+    },
+
 ]
