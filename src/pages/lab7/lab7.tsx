@@ -9,88 +9,44 @@ const Lab7: React.FC<BinaryCalculatorProps> = () => {
     const [operation, setOperation] = useState('+');
     const [result, setResult] = useState('');
 
-    const reverseBinary = (num: string): string => {
-        return num.split('').map((bit) => (bit === '0' ? '1' : '0')).join('');
-    };
-
-    const toReverseBinary = (num: string): string => {
-        if (num.startsWith('-')) {
-            num = num.slice(1).padStart(8, '0');
-            num = reverseBinary(num);
-        } else {
-            num = num.padStart(8, '0');
-        }
-        return num;
-    };
-
-    const reverseBinaryAddition = (a: string, b: string): string => {
-        let carry = 0;
-        let result = '';
-        for (let i = a.length - 1; i >= 0; i--) {
-            let temp = carry;
-            temp += a[i] === '1' ? 1 : 0;
-            temp += b[i] === '1' ? 1 : 0;
-            result = (temp % 2 === 1 ? '1' : '0') + result;
-            carry = temp > 1 ? 1 : 0;
-        }
-
-        if (carry !== 0) {
-            result = '1' + result;
-        }
-
-        if (result.endsWith('0')) {
-            result = result.slice(0, -1) + '1';
-        }
-
-        return result;
-    };
-
-
-    const reverseBinarySubtraction = (a: string, b: string): string => {
-        let borrow = 0;
-        let result = '';
-        for (let i = a.length - 1; i >= 0; i--) {
-            let temp = borrow;
-            temp += a[i] === '1' ? 1 : 0;
-            temp -= b[i] === '1' ? 1 : 0;
-            if (temp < 0) {
-                temp += 2;
-                borrow = -1;
-            } else {
-                borrow = 0;
-            }
-            result = (temp % 2 === 1 ? '1' : '0') + result;
-        }
-        if (borrow !== 0) {
-            console.error('Invalid operation: result is negative');
-            return '';
-        }
-        // Remove leading zeroes
-        while (result.startsWith('0') && result.length > 1) {
-            result = result.slice(1);
-        }
-        return result;
-    };
-
-    const handleOperationChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setOperation(event.target.value);
-    };
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        const num1 = toReverseBinary(binaryNum1);
-        const num2 = toReverseBinary(binaryNum2);
-        let result: string;
+
+        let num1 = parseInt(binaryNum1, 2);
+        let num2 = parseInt(binaryNum2, 2);
+
+        // Вычисление результата на основе выбранной операции
+        let calculatedResult;
         if (operation === '+') {
-            result = reverseBinaryAddition(num1, num2);
+            calculatedResult = num1 + num2;
         } else if (operation === '-') {
-            result = reverseBinarySubtraction(num1, num2);
-        } else {
-            console.error('Invalid operation');
-            return;
+            calculatedResult = num1 - num2;
         }
-        setResult(result);
+
+        // Проверка, была ли выбрана операция
+        if (calculatedResult !== undefined) {
+            // Преобразование результата обратно в двоичное число в дополнительном коде
+            let binaryResult = (calculatedResult >>> 0).toString(2);
+
+            // Добавление ведущих нулей, чтобы число было в формате дополнительного кода
+            binaryResult = addLeadingZeros(binaryResult, binaryNum1.length);
+
+            // Отображение результата
+            setResult(binaryResult);
+        } else {
+            // Отображение сообщения об ошибке или обработка случая, когда операция не выбрана
+            setResult('Пожалуйста, выберите операцию');
+        }
     };
+
+// Функция для добавления ведущих нулей в двоичное число
+    const addLeadingZeros = (binaryNumber: string, length: number): string => {
+        while (binaryNumber.length < length) {
+            binaryNumber = '0' + binaryNumber;
+        }
+        return binaryNumber;
+    };
+
     return (
         <Row>
             <Col>
@@ -130,7 +86,6 @@ const Lab7: React.FC<BinaryCalculatorProps> = () => {
                 <div  className={'mt-1 p-1 m-lg-1'} >Результат: {result}</div>
             </Col>
         </Row>
-
     );
 };
 

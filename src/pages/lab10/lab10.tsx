@@ -2,29 +2,47 @@ import React, { useState } from "react";
 import { Col, Form, Row, Button } from "react-bootstrap";
 
 const Lab10: React.FC = () => {
-    // состояния для двух двоичных чисел и результата их умножения
     const [binaryNum1, setBinaryNum1] = useState("");
     const [binaryNum2, setBinaryNum2] = useState("");
     const [result, setResult] = useState("");
 
-    // функция умножения двух двоичных чисел
     const divideBinary = (a: string, b: string): string => {
-        const lenA = a.length;
-        const lenB = b.length;
-        const dividend = parseInt(a, 2);
-        const divisor = parseInt(b, 2);
-        let quotient = Math.floor(dividend / divisor).toString(2);
-        let remainder = (dividend % divisor).toString(2);
-        if (quotient === "0") {
-            remainder = dividend.toString(2);
+        const num1 = a.trim();
+        const num2 = b.trim();
+        console.log(num1)
+        if (num2 === "0") {
+            return "Деление на ноль невозможно";
         }
-        let result = quotient + "." + remainder;
-        if (remainder === "0") {
-            result = quotient;
-        }
-        return result;
-    };
 
+        const num1Length = num1.length;
+        const num2Length = num2.length;
+
+        if (num1Length < num2Length) {
+            return "0";
+        }
+
+        let quotient = "";
+        let remainder = num1.substring(0, num2Length);
+
+        for (let i = num2Length; i <= num1Length; i++) {
+            if (remainder >= num2) {
+                quotient += "1";
+                remainder = (parseInt(remainder, 2) - parseInt(num2, 2)).toString(2);
+            } else {
+                quotient += "0";
+            }
+
+            if (i < num1Length) {
+                remainder += num1[i];
+            }
+        }
+
+        if (remainder === "") {
+            remainder = "0";
+        }
+
+        return quotient + "." + remainder;
+    };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -59,13 +77,13 @@ const Lab10: React.FC = () => {
                         </Form.Group>
                     </Col>
                 </Row>
-                <Button className={'p-1 m m-2'} variant="outline-dark" type="submit">
+                <Button className={"p-1 m m-2"} variant="outline-dark" type="submit">
                     /
                 </Button>
             </Form>
             <br />
             <h3>Результат:</h3>
-            <p>{parseFloat(result).toFixed(10)}</p>
+            <p>{result}</p>
         </div>
     );
 };
