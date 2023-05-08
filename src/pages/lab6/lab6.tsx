@@ -4,7 +4,7 @@ import {Col, Form, Row, Button} from "react-bootstrap";
 const convert = (num: string): string | string[] => {
     let originalNum: string = (num[0] === '+' || num[0] === '-') ? num.slice(1) : num;
 
-    if (originalNum.length > 7) {
+    if (originalNum.length > 8) {
         return 'Ваше число выходит за пределы 8-ми бит!';
     }
 
@@ -133,5 +133,6 @@ const Lab6 = () => {
         </div>
     );
 }
+
 
 export default Lab6;

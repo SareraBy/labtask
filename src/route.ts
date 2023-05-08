@@ -7,7 +7,7 @@ import {
     lab4_ROUTE,
     lab5_ROUTE,
     lab6_ROUTE, lab7_ROUTE, lab8_ROUTE, lab9_ROUTE,
-    MATH_ROUTE
+    MATH_ROUTE, Sys_ROUTE
 } from "./utils/route";
 import Math from "./pages/Math";
 import lab1 from "./pages/lab1/lab1";
@@ -20,6 +20,7 @@ import lab7 from "./pages/lab7/lab7";
 import lab8 from "./pages/lab8/lab8";
 import lab9 from "./pages/lab9/lab9";
 import lab10 from "./pages/lab10/lab10";
+import MathSys from "./pages/MathSys";
 
 export const publicRoutes = [
     {
@@ -71,4 +72,8 @@ export const publicRoutes = [
         Component: lab10
     },
 
+    {
+        path: Sys_ROUTE,
+        Component: MathSys
+    },
 ]

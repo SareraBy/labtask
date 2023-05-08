@@ -21,3 +21,8 @@
 }.btn1-click-m:hover{
     transform: scale(1.02);
  }
+
+ .btn_s{
+     width: 15px;
+     height: 15px;
+ }

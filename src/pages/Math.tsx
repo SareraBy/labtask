@@ -1,92 +1,143 @@
-import React, {useState} from 'react';
-import ButtonClick from "../components/Button/ButtonC";
-import {Button, Row} from "react-bootstrap";
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 
 const Math: React.FC = () => {
-    const [value, setValue] = useState<any>(0);
-    const [operator, setOperator] = useState<any>("+");
-    const [result, setResult] = useState<any>(0);
-    const [numberSystem, setNumberSystem] = useState<any>(10);
+    const [input, setInput] = useState<string>(''); // Вхідна строка для обчислень
+    const [result, setResult] = useState<string>(''); // Результат обчислень
+    const [base, setBase] = useState<number>(10); // Система числення для перекладу
 
-    const handleNumberClick = (num: number) => {
-        setValue(value * numberSystem + num);
+    // Функція для додавання символів до вхідної строки
+    const addToInput = (value: string): void => {
+        setInput(input + value);
     };
 
-    const handleOperatorClick = (op: string) => {
-        setOperator(op);
-        setResult(value);
-        setValue(0);
-    };
-
-    const handleEqualClick = () => {
-        let res = 0;
-        if (operator === "+") {
-            res = result + value;
-        } else if (operator === "-") {
-            res = result - value;
-        } else if (operator === "*") {
-            res = result * value;
-        } else if (operator === "/") {
-            res = result / value;
+    // Функція для виконання обчислень і встановлення результату
+    const calculateResult = (): void => {
+        try {
+            const decimalResult = eval(input); // Обчислення в десятковій системі числення
+            const convertedResult = decimalResult.toString(base); // Переклад результату в задану систему числення
+            setResult(convertedResult);
+        } catch (error) {
+            setResult('Error');
         }
-        setResult(res);
-        setValue(res);
     };
 
-    const handleSystemChange = (system: number) => {
-        setNumberSystem(system);
+    // Функція для очищення вхідної строки і результату
+    const clearInput = (): void => {
+        setInput('');
+        setResult('');
     };
 
-    const convertToBinary = (num: number) => {
-        return num.toString(2);
+    // Функція для зміни системи числення
+    const changeBase = (newBase: number): void => {
+        setBase(newBase);
+        setResult('');
     };
 
-    const convertToOctal = (num: number) => {
-        return num.toString(8);
-    };
-
-    const convertToHexadecimal = (num: number) => {
-        return num.toString(16).toUpperCase();
-    };
 
     return (
-        <div className={"m-5 d-flex align-content-center justify-content-center"}>
-            <div style={{width: "500px", background: "darkslategray", borderRadius: '25px'}} className={"d-grid"}>
-                <h4 style={{color: "white"}} className={"text-center mt-2"}>Калькулятор</h4>
-                <input className={"mb-2"}
-                       style={{height: '50px', width: "300px", marginLeft: 'auto', marginRight: 'auto'}} value={value}
-                       type="text" name="name"/>
-                <Row style={{width: "300px"}} md={3} className={"d-flex align-content-center justify-content-center"}>
-                    <ButtonClick onClick={() => setValue(1)}>1</ButtonClick>
-                    <ButtonClick onClick={() => setValue(2)}>2</ButtonClick>
-                    <ButtonClick onClick={() => setValue(3)}>3</ButtonClick>
-                    <ButtonClick onClick={() => setValue("+")}>+</ButtonClick>
-                    <ButtonClick onClick={() => setValue(4)}>4</ButtonClick>
-                    <ButtonClick onClick={() => setValue(5)}>5</ButtonClick>
-                    <ButtonClick onClick={() => setValue(6)}>6</ButtonClick>
-                    <ButtonClick onClick={() => setValue("-")}>-</ButtonClick>
-                    <ButtonClick onClick={() => setValue(7)}>7</ButtonClick>
-                    <ButtonClick onClick={() => setValue(8)}>8</ButtonClick>
-                    <ButtonClick onClick={() => setValue(9)}>9</ButtonClick>
-                    <ButtonClick onClick={() => setValue("*")}>*</ButtonClick>
-                    <ButtonClick onClick={() => setValue(0)}>0</ButtonClick>
-                    <ButtonClick onClick={() => setValue("C")}>C</ButtonClick>
-                    <ButtonClick onClick={() => setValue("/")}>/</ButtonClick>
-                    <ButtonClick onClick={() => console.log(value)}>=</ButtonClick>
-                </Row>
-                <Row className={"d-flex align-content-center justify-content-center"}>
-                    <Button variant="outline-light" className={"m-2"}
-                            onClick={() => setValue(parseInt(value as any, 10).toString(2))}>2</Button>
-                    <Button variant="outline-light" className={"m-2"}
-                            onClick={() => setValue(parseInt(value as any, 10).toString(8))}>8</Button>
-                    <Button variant="outline-light" className={"m-2"}
-                            onClick={() => setValue(parseInt(value as any, 10).toString(10))}>10</Button>
-                    <Button variant="outline-light" className={"m-2"}
-                            onClick={() => setValue(parseInt(value as any, 10).toString(16))}>16</Button>
-                </Row>
-            </div>
-        </div>
-    );
-}
+        <Container className="my-4">
+            <h1>Калькулятор</h1>
+            <input type="text" className="form-control mb-4" value={input} onChange={(e) => setInput(e.target.value)} />
+            <Row>
+                <Col>
+                    <Button style={{width: "35px", height:"35px"}} className={"m-2"} variant="outline-dark"  onClick={() => addToInput('1')}>
+                        1
+                    </Button>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-dark"  onClick={() => addToInput('2')}>
+                        2
+                    </Button>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-dark"  onClick={() => addToInput('3')}>
+                        3
+                    </Button>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-dark"   onClick={() => addToInput('+')}>
+                        +
+                    </Button>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-dark"   onClick={() => addToInput('4')}>
+                        4
+                    </Button>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-dark"  onClick={() => addToInput('5')}>
+                        5
+                    </Button>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-dark"  onClick={() => addToInput('6')}>
+                        6
+                    </Button>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-dark"   onClick={() => addToInput('-')}>
+                        -
+                    </Button>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-dark"   onClick={() => addToInput('7')}>
+                        7
+                    </Button>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-dark"   onClick={() => addToInput('8')}>
+                        8
+                    </Button>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-dark"  onClick={() => addToInput('9')}>
+                        9
+                    </Button>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-dark"   onClick={() => addToInput('*')}>
+                        *
+                    </Button>
 
-    export default Math;
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-dark"   onClick={() => addToInput('0')}>
+                        0
+                    </Button>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-dark"   onClick={() => addToInput('.')}>
+                        .
+                    </Button>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-success" onClick={calculateResult}>
+                        =
+                    </Button>
+                    <Button style={{width: "35px", height:"35px"}}  className={"m-2"} variant="outline-dark"   onClick={() => addToInput('/')}>
+                        /
+                    </Button>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+
+                    <Button style={{width: "180px", height:"35px"}}  className={"m-2"} variant="outline-danger" onClick={clearInput}>
+                        Clear
+                    </Button>
+                </Col>
+            </Row>
+            <Row className="mt-4">
+                <Col>
+                    <h4>Система числення:</h4>
+                    <Button  variant={base === 2 ? 'dark' : 'light'} onClick={() => changeBase(2)} className="mr-2">
+                        2
+                    </Button>
+                    <Button variant={base === 8 ? 'dark' : 'light'} onClick={() => changeBase(8)} className="mr-2">
+                        8
+                    </Button>
+                    <Button variant={base === 10 ? 'dark' : 'light'} onClick={() => changeBase(10)} className="mr-2">
+                        10
+                    </Button>
+                    <Button variant={base === 16 ? 'dark' : 'light'} onClick={() => changeBase(16)} className="mr-2">
+                        16
+                    </Button>
+                </Col>
+            </Row>
+    <Row>
+        <Col>
+            <h4>Результат:</h4>
+            <p>{result}</p>
+        </Col>
+    </Row>
+</Container>
+);
+};
+
+export default Math;
